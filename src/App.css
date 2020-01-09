@@ -8,10 +8,9 @@
   max-height: 25vh;
   max-width: 35vh;
   padding: 50px;
-  background: rgba(248, 246, 246, 0.2);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, .5);
+  background: #f1f2f6;
   border-radius: 2vh;
-  margin-left: 75vh;
+  margin-left: 80vh;
   margin-top: 12vh;
 
 }
@@ -19,8 +18,8 @@
 .header {
   padding: 60px;
   text-align: center;
-  background: #1abc9c;
-  color: white;
+  background:#f1f2f6;
+  color:#192a56;
   font-size: 30px;
 }
 

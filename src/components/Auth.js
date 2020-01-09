@@ -1,6 +1,8 @@
 import React from "react";
-import "./App.css";
+import "../App.css";
 
+//components
+import Header from "./Header";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 
@@ -30,9 +32,8 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="mainContainer">
-        <div class="header">
-          <h1>Header</h1>
-        </div>
+        {/* header */}
+        <Header />
 
         <div className="AppContainer">
           {this.state.isSignedIn ? (

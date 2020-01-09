@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import Auth from "./Auth";
+import Auth from "./components/Auth";
 
 const App = () => {
   return (
