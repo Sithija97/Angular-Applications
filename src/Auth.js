@@ -30,19 +30,26 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="mainContainer">
-        {this.state.isSignedIn ? (
-          <div>
-            <h3>Sign in</h3>
-            <button onClick={()=> firebase.auth().signOut()}>Sign out</button>
-          </div>
-        ) : (
-          <div  style={{display: 'flex', justifyContent: 'center'}}>
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
-          </div>
-        )}
+        <div className="Header">
+        </div>
+
+        <div className="AppContainer">
+          {this.state.isSignedIn ? (
+            <div>
+              <h3>Sign in</h3>
+              <button onClick={() => firebase.auth().signOut()}>
+                Sign out
+              </button>
+            </div>
+          ) : (
+            <div>
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </div>
+          )}
+        </div>
       </div>
     );
   }
