@@ -30,7 +30,8 @@ class Auth extends React.Component {
   render() {
     return (
       <div className="mainContainer">
-        <div className="Header">
+        <div class="header">
+          <h1>Header</h1>
         </div>
 
         <div className="AppContainer">
