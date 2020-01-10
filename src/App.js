@@ -1,12 +1,14 @@
 import React from "react";
 import "./App.css";
-import Untitled from "./images/Untitled.png";
+
+//components
+import Cards from "./components/Cards"
 import Auth from "./components/Auth";
 
 const App = () => {
   return (
     <div>
-      <Auth />
+      <Auth/>
     </div>
   );
 };

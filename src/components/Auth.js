@@ -6,6 +6,8 @@ import Header from "./Header";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 import Untitled from "../images/Untitled.png";
+import Cards from "./Cards";
+import Footer from "./Footer";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAjSRy3TtXjpON7pO1F7MYhVxb6m644qEw",
@@ -45,21 +47,30 @@ class Auth extends React.Component {
           </div>
         ) : (
           <div className="MainLabel">
-            <img src={Untitled} align="right" className="Img" />
-            <p style={{ fontWeight: "initial", fontSize: 40 }}>
-              What is Patron
-            </p>
-            <p style={{ fontWeight: "normal", fontSize: 20 }}>
-              "Patron is the platform which connects benificiaries and
-              benifactors..<br></br>here you can chose the available projects
-              and Donate !"
-            </p>
+            <span>
+              <img src={Untitled} align="right" className="Img" />
+              <p style={{ fontWeight: "initial", fontSize: 40 }}>
+                What is Patron
+              </p>
+              <p style={{ fontWeight: "normal", fontSize: 20 }}>
+                "Patron is the platform which connects benificiaries and
+                benifactors..<br></br>here you can chose the available projects
+                and Donate !"
+              </p>
+            </span>
+            <span>
+              <Cards name="Health -Care & Medical Emergencies"/>
+              <Cards name="Service requirements"/>
+              <Cards name="Monetary requirements"/>
+              <Cards name="Physical Resources requirements"/>
+            </span>
+
             <div className="SocialButtons">
-            <StyledFirebaseAuth
-              uiConfig={this.uiConfig}
-              firebaseAuth={firebase.auth()}
-            />
-          </div>
+              <StyledFirebaseAuth
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+            </div>
           </div>
         )}
       </div>
