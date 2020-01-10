@@ -41,9 +41,27 @@ class Auth extends React.Component {
 
         {this.state.isSignedIn ? (
           <div>
-            <img alt="profile picture" src={firebase.auth().currentUser.photoURL} className="ProPic"/>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <h3>Sign in</h3>
+            <span className="Profile">
+              <ul>
+                <li>
+                  <img
+                    alt="profile picture"
+                    src={firebase.auth().currentUser.photoURL}
+                    className="ProPic"
+                  />
+                </li>
+
+                <li>
+                  <h1 style={{ color: "white" }}>
+                    Welcome <br></br> {firebase.auth().currentUser.displayName}
+                  </h1>
+                </li>
+
+                <li>
+                  <p style={{ color: "white" }}>Sign in</p>
+                </li>
+              </ul>
+            </span>
             <button onClick={() => firebase.auth().signOut()}>Sign out</button>
           </div>
         ) : (
@@ -60,10 +78,10 @@ class Auth extends React.Component {
               </p>
             </span>
             <span>
-              <Cards name="Health -Care & Medical Emergencies"/>
-              <Cards name="Service requirements"/>
-              <Cards name="Monetary requirements"/>
-              <Cards name="Physical Resources requirements"/>
+              <Cards name="Health -Care & Medical Emergencies" />
+              <Cards name="Service requirements" />
+              <Cards name="Monetary requirements" />
+              <Cards name="Physical Resources requirements" />
             </span>
 
             <div className="SocialButtons">
