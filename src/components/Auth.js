@@ -44,21 +44,22 @@ class Auth extends React.Component {
             <button onClick={() => firebase.auth().signOut()}>Sign out</button>
           </div>
         ) : (
-          <div>
-            
-              <img src={Untitled} align="right" className="Img" />
-              <h2>What is Patron</h2>
-              <h3>
-                "Patron is the platform which connects benificiaries and
-                benifactors..<br></br>here you can chose the available projects and Donate!"
-              </h3>
-           
-           
-              <StyledFirebaseAuth
-                uiConfig={this.uiConfig}
-                firebaseAuth={firebase.auth()}
-              />
-            
+          <div className="MainLabel">
+            <img src={Untitled} align="right" className="Img" />
+            <p style={{ fontWeight: "initial", fontSize: 40 }}>
+              What is Patron
+            </p>
+            <p style={{ fontWeight: "normal", fontSize: 20 }}>
+              "Patron is the platform which connects benificiaries and
+              benifactors..<br></br>here you can chose the available projects
+              and Donate !"
+            </p>
+            <div className="SocialButtons">
+            <StyledFirebaseAuth
+              uiConfig={this.uiConfig}
+              firebaseAuth={firebase.auth()}
+            />
+          </div>
           </div>
         )}
       </div>

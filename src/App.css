@@ -38,3 +38,17 @@ display: flexbox;
   padding: 8vh;
   border-radius: 2vh;
   background: rgb(241, 238, 238); */
+
+.MainLabel{
+  margin-left: 2vh;
+  margin-right: 10vh;
+  margin-top: 2vh;
+}
+
+.p{
+  fontFamily:'Trebuchet MS, Helvetica, sans-serif',
+}
+
+.SocialButtons{
+  margin-top: 75vh;
+}
