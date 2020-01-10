@@ -72,3 +72,9 @@ display: flexbox;
   text-align: center;
   margin-top: 20vh;
 }
+
+.ProPic{
+  width: 15vh;
+  height: 15vh;
+  border-radius: 100vh;
+}

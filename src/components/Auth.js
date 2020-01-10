@@ -41,6 +41,7 @@ class Auth extends React.Component {
 
         {this.state.isSignedIn ? (
           <div>
+            <img alt="profile picture" src={firebase.auth().currentUser.photoURL} className="ProPic"/>
             <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
             <h3>Sign in</h3>
             <button onClick={() => firebase.auth().signOut()}>Sign out</button>
