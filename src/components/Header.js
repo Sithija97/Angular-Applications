@@ -2,14 +2,14 @@ import React from "react";
 import "../App.css";
 
 const Header = () => {
-  return(
+  return (
     <div>
-    <div class="header">
-      <h1>P A T R O N </h1>
+      <div class="header">
+        <h1>P A T R O N </h1>
+      </div>
     </div>
-    ;
-  </div>
   );
 };
 
 export default Header;
+

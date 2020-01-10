@@ -9,7 +9,7 @@
   max-width: 35vh;
   padding: 50px;
   background: #f1f2f6;
-  border-radius: 2vh;
+  border-radius: 1vh;
   margin-left: 80vh;
   margin-top: 12vh;
 
@@ -23,6 +23,10 @@
   font-size: 30px;
 }
 
+.Img{
+  max-width: 40%;
+  max-height: 40%;
+}
 /* 
 display: flexbox;
   margin-left: 75vh;

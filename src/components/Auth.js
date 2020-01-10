@@ -5,6 +5,7 @@ import "../App.css";
 import Header from "./Header";
 import firebase from "firebase";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import Untitled from "../images/Untitled.png";
 
 firebase.initializeApp({
   apiKey: "AIzaSyAjSRy3TtXjpON7pO1F7MYhVxb6m644qEw",
@@ -27,6 +28,7 @@ class Auth extends React.Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user });
+      console.log("user", user);
     });
   };
   render() {
@@ -35,23 +37,30 @@ class Auth extends React.Component {
         {/* header */}
         <Header />
 
-        <div className="AppContainer">
-          {this.state.isSignedIn ? (
-            <div>
-              <h3>Sign in</h3>
-              <button onClick={() => firebase.auth().signOut()}>
-                Sign out
-              </button>
-            </div>
-          ) : (
-            <div>
+        {this.state.isSignedIn ? (
+          <div>
+            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
+            <h3>Sign in</h3>
+            <button onClick={() => firebase.auth().signOut()}>Sign out</button>
+          </div>
+        ) : (
+          <div>
+            
+              <img src={Untitled} align="right" className="Img" />
+              <h2>What is Patron</h2>
+              <h3>
+                "Patron is the platform which connects benificiaries and
+                benifactors..<br></br>here you can chose the available projects and Donate!"
+              </h3>
+           
+           
               <StyledFirebaseAuth
                 uiConfig={this.uiConfig}
                 firebaseAuth={firebase.auth()}
               />
-            </div>
-          )}
-        </div>
+            
+          </div>
+        )}
       </div>
     );
   }
