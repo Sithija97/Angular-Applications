@@ -55,11 +55,14 @@ display: flexbox;
 
 .Cards{
   background-color: #f1f2f6 ;
-  height: 40vh;
-  width: 80vh;
+  height: 10vh;
+  width: 60vh;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 5vh;
-  border-radius: 2vh;
+  border-radius: 1vh;
 }
 
 .footer{
@@ -81,10 +84,18 @@ display: flexbox;
 
 .Profile{
   display: table-column;
-  background-color: #192a56 ;
+  background-color: #575fcf ;
   height: 90vh;
   width: 30vh;
   display: flex;
   margin: 5vh;
   border-radius: 2vh;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.CardTitle{
+  font-weight: bold;
 }

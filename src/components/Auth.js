@@ -42,7 +42,7 @@ class Auth extends React.Component {
         {this.state.isSignedIn ? (
           <div>
             <span className="Profile">
-              <ul>
+              <ul style={{ padding: "5vh" }}>
                 <li>
                   <img
                     alt="profile picture"
@@ -60,9 +60,14 @@ class Auth extends React.Component {
                 <li>
                   <p style={{ color: "white" }}>Sign in</p>
                 </li>
+
+                <li>
+                  <button onClick={() => firebase.auth().signOut()}>
+                    Sign out
+                  </button>
+                </li>
               </ul>
             </span>
-            <button onClick={() => firebase.auth().signOut()}>Sign out</button>
           </div>
         ) : (
           <div className="MainLabel">
@@ -72,10 +77,11 @@ class Auth extends React.Component {
                 What is Patron
               </p>
               <p style={{ fontWeight: "normal", fontSize: 20 }}>
-                "Patron is the platform which connects benificiaries and
-                benifactors..<br></br>here you can chose the available projects
-                and Donate !"
+                <br></br>"Patron is the platform which connects benificiaries
+                and benifactors..<br></br>here you can chose the available
+                projects and Donate !"
               </p>
+              <p style={{ fontWeight: "initial", fontSize: 22 }}><br></br>You can place your donations for the following categories</p>
             </span>
             <span>
               <Cards name="Health -Care & Medical Emergencies" />
