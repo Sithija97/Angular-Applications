@@ -1,14 +1,19 @@
 import React from "react";
-import "./App.css";
-import Header from "./components/header.jsx";
-import Home from "./components/home.jsx";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthProvider } from "./context/authContext";
+import Login from "./components/login";
+import Home from "./components/home";
 
 function App() {
   return (
-    <React.Fragment>
-      <Header />
-      <Home />
-    </React.Fragment>
+    <Router>
+      <AuthProvider>
+        <Switch>
+          <Route path="/home" component={Home} />
+          <Route path="/" component={Login} />
+        </Switch>
+      </AuthProvider>
+    </Router>
   );
 }
 

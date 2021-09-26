@@ -1,35 +1,122 @@
-import React from "react";
-import Card from "./card";
-import Table from "./table";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { auth } from "../firebase";
+import { useAuth } from "../context/authContext";
 
-function Home() {
+import Button from "@mui/material/Button";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import { ListItem } from "@mui/material";
+import DataTable from "./dataTable";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogActions from "@mui/material/DialogActions";
+import Dialog from "@mui/material/Dialog";
+
+import TextInput from "./textInput";
+import Form from "./form";
+
+const Home = () => {
+  const history = useHistory();
+  const { user } = useAuth();
+
+  const initialState = {
+    address: "",
+    city: "",
+    zip: "",
+    country: "",
+    client_name: "",
+    client_email: "",
+    c_address: "",
+    c_city: "",
+    c_zip: "",
+    c_country: "",
+  };
+  const [open, setOpen] = useState(false);
+  const [state, setState] = useState(initialState);
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+      return;
+    }
+    /* other func if user is there */
+  }, [user, history]);
+
+  const handleLoggedOut = async () => {
+    await auth.signOut();
+    history.push("/");
+  };
+
   return (
-    <div class="flex flex-wrap h-screen px-10 py-10">
-      <div class="w-full overflow-hidden lg:w-1/3 xl:w-1/3 px-5">
-        {/* <!-- Content --> */}
-        <div className="grid grid-rows-2">
-          {/* <Card /> */}
-          <Table />
-        </div>
-      </div>
-
-      <div class="w-full overflow-hidden lg:w-1/3 xl:w-1/3 px-5">
-        {/* <!-- Content --> */}
-        <div className="grid grid-rows-2">
-          <Card />
-          <Card />
-        </div>
-      </div>
-
-      <div class="w-full overflow-hidden lg:w-1/3 xl:w-1/3 px-5">
-        {/* <!-- Content --> */}
-        <div className="grid grid-rows-2">
-          <Card />
-          <Card />
-        </div>
-      </div>
-    </div>
+    <React.Fragment>
+      <Container maxWidth="xl">
+        <Grid container justify="space-between" spacing={2}>
+          <Grid item xs={6} md={8}>
+            <ListItem>
+              <b>
+                hi {user && user.displayName} ! there are 16 total invoices{" "}
+              </b>
+            </ListItem>
+          </Grid>
+          <Grid item xs={6} md={4}>
+            <Grid
+              container
+              direction="row"
+              justifyContent="flex-end"
+              alignItems="center"
+            >
+              <Grid item>
+                <ListItem>
+                  <Button variant="contained" onClick={handleLoggedOut}>
+                    logout
+                  </Button>
+                </ListItem>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={6} md={8}></Grid>
+          <Grid item xs={6} md={4}>
+            <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Grid item>
+                <ListItem>
+                  <Button variant="contained" onClick={() => setOpen(true)}>
+                    Create
+                  </Button>
+                </ListItem>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Container maxWidth="lg">
+          {/* <DataTable /> */}
+          <Dialog
+            maxWidth="lg"
+            open={open}
+            onClose={() => setOpen(false)}
+            aria-labelledby="form-dialog-title"
+          >
+            <DialogTitle id="form-dialog-title">Add Transactions</DialogTitle>
+            <DialogContent>
+              {/* text form */}
+              <Form />
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={() => setOpen(false)} color="primary">
+                Cancel
+              </Button>
+              <Button color="primary">Add</Button>
+            </DialogActions>
+          </Dialog>
+        </Container>
+      </Container>
+    </React.Fragment>
   );
-}
+};
 
 export default Home;
