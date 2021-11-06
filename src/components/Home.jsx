@@ -15,25 +15,14 @@ import Dialog from "@mui/material/Dialog";
 
 import TextInput from "./textInput";
 import Form from "./form";
+import CategoryBoxes from "./categoryBoxes";
+import ProfileSection from "./profileSection";
 
 const Home = () => {
   const history = useHistory();
   const { user } = useAuth();
 
-  const initialState = {
-    address: "",
-    city: "",
-    zip: "",
-    country: "",
-    client_name: "",
-    client_email: "",
-    c_address: "",
-    c_city: "",
-    c_zip: "",
-    c_country: "",
-  };
   const [open, setOpen] = useState(false);
-  const [state, setState] = useState(initialState);
 
   useEffect(() => {
     if (!user) {
@@ -54,9 +43,7 @@ const Home = () => {
         <Grid container justify="space-between" spacing={2}>
           <Grid item xs={6} md={8}>
             <ListItem>
-              <b>
-                hi {user && user.displayName} ! there are 16 total invoices{" "}
-              </b>
+              <b>Hi {user && user.displayName} Welcome to Money Manager!</b>
             </ListItem>
           </Grid>
           <Grid item xs={6} md={4}>
@@ -85,8 +72,13 @@ const Home = () => {
             >
               <Grid item>
                 <ListItem>
+                  <Button variant="contained">Set Budget</Button>
+                </ListItem>
+              </Grid>
+              <Grid item>
+                <ListItem>
                   <Button variant="contained" onClick={() => setOpen(true)}>
-                    Create
+                    Add
                   </Button>
                 </ListItem>
               </Grid>
@@ -94,6 +86,21 @@ const Home = () => {
           </Grid>
         </Grid>
         <Container maxWidth="lg">
+          <Grid container spacing={2}>
+            <Grid item xs={6} md={4}>
+              <ListItem>
+                <ProfileSection />
+              </ListItem>
+            </Grid>
+            <Grid item xs={6} md={8}>
+              <ListItem>
+                <CategoryBoxes />
+              </ListItem>
+              <ListItem>
+                <DataTable />{" "}
+              </ListItem>
+            </Grid>
+          </Grid>
           {/* <DataTable /> */}
           <Dialog
             maxWidth="lg"
@@ -106,12 +113,7 @@ const Home = () => {
               {/* text form */}
               <Form />
             </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setOpen(false)} color="primary">
-                Cancel
-              </Button>
-              <Button color="primary">Add</Button>
-            </DialogActions>
+            {/* dialog action */}
           </Dialog>
         </Container>
       </Container>
