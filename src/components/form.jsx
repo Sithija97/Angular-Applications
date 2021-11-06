@@ -5,9 +5,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
 import RemoveFromQueueIcon from "@mui/icons-material/RemoveFromQueue";
+import { FcSurvey, FcHighPriority, FcApproval } from "react-icons/fc";
 import { Button, DialogActions, MenuItem, Select, Stack } from "@mui/material";
 
-const Form = () => {
+const Form = ({ closePopup }) => {
   const initialState = {
     description: "",
     amount: "",
@@ -30,7 +31,7 @@ const Form = () => {
         <List component="nav" aria-label="main mailbox folders">
           <ListItem className="form_elements">
             <ListItemIcon>
-              <RemoveFromQueueIcon />
+              <FcSurvey className="categoryIcon" />
             </ListItemIcon>
             <ListItemText primary={""} />
             <TextField
@@ -43,7 +44,7 @@ const Form = () => {
 
           <ListItem className="form_elements">
             <ListItemIcon>
-              <RemoveFromQueueIcon />
+              <FcSurvey className="categoryIcon" />
             </ListItemIcon>
             <ListItemText primary={""} />
             <TextField
@@ -56,7 +57,7 @@ const Form = () => {
 
           <ListItem className="form_elements">
             <ListItemIcon>
-              <RemoveFromQueueIcon />
+              <FcSurvey className="categoryIcon" />
             </ListItemIcon>
             <ListItemText primary={"category"} />
             <Select
@@ -75,7 +76,7 @@ const Form = () => {
 
           <ListItem className="form_elements">
             <ListItemIcon>
-              <RemoveFromQueueIcon />
+              <FcSurvey className="categoryIcon" />
             </ListItemIcon>
             <ListItemText primary={""} />
             <TextField
@@ -95,10 +96,10 @@ const Form = () => {
           </ListItem>
         </List>
         <DialogActions>
-          {/* <Button color="primary">Cancel</Button> */}
-          <Button color="primary" onClick={handleSubmit}>
-            Add
-          </Button>
+          <b>Cancel</b>
+          <FcHighPriority className="categoryIcon" onClick={closePopup} />
+          <b>Add</b>
+          <FcApproval className="categoryIcon" onClick={handleSubmit} />
         </DialogActions>
       </form>
     </div>

@@ -12,8 +12,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Dialog from "@mui/material/Dialog";
-
+import { FcUpLeft, FcPlus, FcNook, FcDoughnutChart } from "react-icons/fc";
 import TextInput from "./textInput";
+import Badge from "@mui/material/Badge";
 import Form from "./form";
 import CategoryBoxes from "./categoryBoxes";
 import ProfileSection from "./profileSection";
@@ -37,13 +38,20 @@ const Home = () => {
     history.push("/");
   };
 
+  const closePopup = () => {
+    setOpen(false);
+  };
+
   return (
     <React.Fragment>
+      {/* */}
       <Container maxWidth="xl">
         <Grid container justify="space-between" spacing={2}>
           <Grid item xs={6} md={8}>
             <ListItem>
-              <b>Hi {user && user.displayName} Welcome to Money Manager!</b>
+              <b className="numberVaue">
+                Hi {user && user.displayName}, Welcome to Money Manager!
+              </b>
             </ListItem>
           </Grid>
           <Grid item xs={6} md={4}>
@@ -55,9 +63,11 @@ const Home = () => {
             >
               <Grid item>
                 <ListItem>
-                  <Button variant="contained" onClick={handleLoggedOut}>
-                    logout
-                  </Button>
+                  <FcUpLeft
+                    className="categoryIcon"
+                    onClick={handleLoggedOut}
+                  />{" "}
+                  <b> logout</b>
                 </ListItem>
               </Grid>
             </Grid>
@@ -72,14 +82,27 @@ const Home = () => {
             >
               <Grid item>
                 <ListItem>
-                  <Button variant="contained">Set Budget</Button>
+                  <b>Set Budget</b>
+                  <Badge color="secondary" badgeContent={"new"}>
+                    <FcNook className="categoryIcon" />
+                  </Badge>
                 </ListItem>
               </Grid>
               <Grid item>
                 <ListItem>
-                  <Button variant="contained" onClick={() => setOpen(true)}>
-                    Add
-                  </Button>
+                  <b>Graphs</b>{" "}
+                  <Badge color="secondary" badgeContent={"new"}>
+                    <FcDoughnutChart className="categoryIcon" />
+                  </Badge>
+                </ListItem>
+              </Grid>
+              <Grid item>
+                <ListItem>
+                  <b>Add</b>{" "}
+                  <FcPlus
+                    className="categoryIcon"
+                    onClick={() => setOpen(true)}
+                  />
                 </ListItem>
               </Grid>
             </Grid>
@@ -111,12 +134,13 @@ const Home = () => {
             <DialogTitle id="form-dialog-title">Add Transactions</DialogTitle>
             <DialogContent>
               {/* text form */}
-              <Form />
+              <Form closePopup={closePopup} />
             </DialogContent>
             {/* dialog action */}
           </Dialog>
         </Container>
       </Container>
+      <img src="images/img1.png" alt="" className="homeImg" />
     </React.Fragment>
   );
 };
