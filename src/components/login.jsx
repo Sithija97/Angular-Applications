@@ -1,9 +1,8 @@
 import React from "react";
 import { auth, provider } from "../firebase";
 import { signInWithPopup } from "firebase/auth";
-import { Button, Grid, ListItem } from "@mui/material";
+import { Grid, ListItem } from "@mui/material";
 import { Box } from "@mui/system";
-import { FcPositiveDynamic, FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   const handleLogIn = () => {

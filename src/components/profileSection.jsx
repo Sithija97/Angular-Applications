@@ -1,17 +1,18 @@
 import React from "react";
 import { useAuth } from "../context/authContext";
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
+import { TiArrowBack } from "react-icons/ti";
 import { Box } from "@mui/system";
 
-const ProfileSection = () => {
+const ProfileSection = (props) => {
   const { user } = useAuth();
   return (
-    <div>
+    <React.Fragment>
       <Box
         className="boxStyles"
         sx={{
           width: 280,
-          height: 265,
+          height: 275,
           bgcolor: "#fff",
         }}
       >
@@ -25,14 +26,20 @@ const ProfileSection = () => {
             src={user && user.photoURL}
             sx={{ width: 140, height: 140 }}
           />
-          <div className="profileName">
-            <b>{user && user.displayName}</b>
+          <Box ml={3} className="profileName">
+            {user && user.displayName}
             <br />
-            <b>{user && user.email}</b>
-          </div>
+            {user && user.email} <br />
+            <Box style={{ cursor: "pointer" }} onClick={props.handleLoggedOut}>
+              logout
+              <IconButton>
+                <TiArrowBack />
+              </IconButton>
+            </Box>
+          </Box>
         </div>
       </Box>
-    </div>
+    </React.Fragment>
   );
 };
 

@@ -1,15 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
+import { auth } from "../firebase";
+import { useAuth } from "../context/authContext";
+
 import { Box } from "@mui/system";
 import DataTable from "./dataTable";
-import { ListItem } from "@mui/material";
-import { Button, Container, Grid, Typography } from "@mui/material";
-import { FcUpLeft, FcPlus, FcNook, FcDoughnutChart } from "react-icons/fc";
+import { Fab, ListItem } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import { Container, Grid } from "@mui/material";
 
 import Form from "./form";
 import CategoryBoxes from "./categoryBoxes";
 import ProfileSection from "./profileSection";
 
 const HomePage = () => {
+  const history = useHistory();
+  const { user } = useAuth();
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      history.push("/");
+      return;
+    }
+    /* other func if user is there */
+    fetchData();
+  }, [user, history]);
+
+  const handleLoggedOut = async () => {
+    await auth.signOut();
+    history.push("/");
+  };
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const fetchData = () => {
+    // fetch data
+  };
+
+  const postData = (state) => {
+    // post data
+    console.log(state);
+    fetchData();
+  };
+
   return (
     <React.Fragment>
       <Box py={20} className="headerBox" color="white"></Box>
@@ -29,8 +69,22 @@ const HomePage = () => {
                   </Grid>
                   <Grid item xs={6} md={4}>
                     <ListItem>
-                      <ProfileSection />
+                      <ProfileSection handleLoggedOut={handleLoggedOut} />
                     </ListItem>
+                    <Box sx={{ "& > :not(style)": { m: 1 } }}>
+                      <Fab
+                        color="secondary"
+                        className="addButton"
+                        aria-label="add"
+                      >
+                        <AddIcon onClick={handleOpen} />
+                      </Fab>
+                    </Box>
+                    <Form
+                      open={open}
+                      handleClose={handleClose}
+                      postData={postData}
+                    />
                   </Grid>
                 </Grid>
               </Container>

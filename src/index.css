@@ -55,8 +55,9 @@ code {
 }
 
 .profileName {
-  text-align: center;
+  text-align: left;
   margin-top: 40px;
+  font-weight: bold;
 }
 
 .numberVaue {
@@ -130,4 +131,10 @@ code {
 
 .searchButton {
   margin-top: 7px !important;
+}
+
+.addButton {
+  right: -340px !important;
+  bottom: -150px !important;
+  background-color: #d63031 !important;
 }

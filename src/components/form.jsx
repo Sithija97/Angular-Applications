@@ -4,11 +4,16 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import TextField from "@mui/material/TextField";
-import RemoveFromQueueIcon from "@mui/icons-material/RemoveFromQueue";
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+} from "@mui/material";
 import { FcSurvey, FcHighPriority, FcApproval } from "react-icons/fc";
-import { Button, DialogActions, MenuItem, Select, Stack } from "@mui/material";
+import { MenuItem, Select } from "@mui/material";
 
-const Form = ({ closePopup }) => {
+const Form = (props) => {
   const initialState = {
     description: "",
     amount: "",
@@ -24,85 +29,93 @@ const Form = ({ closePopup }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(state);
+    props.postData(state);
   };
   return (
-    <div>
-      <form>
-        <List component="nav" aria-label="main mailbox folders">
-          <ListItem className="form_elements">
-            <ListItemIcon>
-              <FcSurvey className="categoryIcon" />
-            </ListItemIcon>
-            <ListItemText primary={""} />
-            <TextField
-              size="small"
-              label="description"
-              name="description"
-              onChange={handleInputChange}
-            />
-          </ListItem>
+    <Dialog open={props.open}>
+      <DialogTitle></DialogTitle>
+      <DialogContent>
+        <form>
+          <List component="nav" aria-label="main mailbox folders">
+            <ListItem className="form_elements">
+              <ListItemIcon>
+                <FcSurvey className="categoryIcon" />
+              </ListItemIcon>
+              <ListItemText primary={""} />
+              <TextField
+                size="small"
+                label="description"
+                name="description"
+                onChange={handleInputChange}
+              />
+            </ListItem>
 
-          <ListItem className="form_elements">
-            <ListItemIcon>
-              <FcSurvey className="categoryIcon" />
-            </ListItemIcon>
-            <ListItemText primary={""} />
-            <TextField
-              size="small"
-              label="amount"
-              name="amount"
-              onChange={handleInputChange}
-            />
-          </ListItem>
+            <ListItem className="form_elements">
+              <ListItemIcon>
+                <FcSurvey className="categoryIcon" />
+              </ListItemIcon>
+              <ListItemText primary={""} />
+              <TextField
+                size="small"
+                label="amount"
+                name="amount"
+                onChange={handleInputChange}
+              />
+            </ListItem>
 
-          <ListItem className="form_elements">
-            <ListItemIcon>
-              <FcSurvey className="categoryIcon" />
-            </ListItemIcon>
-            <ListItemText primary={"category"} />
-            <Select
-              size="small"
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              name="category"
-              label="category"
-              onChange={handleInputChange}
-            >
-              <MenuItem value={"income"}>income</MenuItem>
-              <MenuItem value={"expense"}>expenses</MenuItem>
-              <MenuItem value={"saving"}>savings</MenuItem>
-            </Select>
-          </ListItem>
+            <ListItem className="form_elements">
+              <ListItemIcon>
+                <FcSurvey className="categoryIcon" />
+              </ListItemIcon>
+              <ListItemText primary={"category"} />
+              <Select
+                size="small"
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                name="category"
+                label="category"
+                onChange={handleInputChange}
+              >
+                <MenuItem value={"income"}>income</MenuItem>
+                <MenuItem value={"expense"}>expenses</MenuItem>
+                <MenuItem value={"saving"}>savings</MenuItem>
+              </Select>
+            </ListItem>
 
-          <ListItem className="form_elements">
-            <ListItemIcon>
-              <FcSurvey className="categoryIcon" />
-            </ListItemIcon>
-            <ListItemText primary={""} />
-            <TextField
-              size="small"
-              fullWidth
-              id="date"
-              label="date"
-              type="date"
-              // defaultValue="2021-05-01"
-              className="textField"
-              name="date"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              onChange={handleInputChange}
+            <ListItem className="form_elements">
+              <ListItemIcon>
+                <FcSurvey className="categoryIcon" />
+              </ListItemIcon>
+              <ListItemText primary={""} />
+              <TextField
+                size="small"
+                fullWidth
+                id="date"
+                label="date"
+                type="date"
+                // defaultValue="2021-05-01"
+                className="textField"
+                name="date"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                onChange={handleInputChange}
+              />
+            </ListItem>
+          </List>
+          <DialogActions>
+            <b>Cancel</b>
+            <FcHighPriority
+              className="categoryIcon"
+              onClick={props.handleClose}
             />
-          </ListItem>
-        </List>
-        <DialogActions>
-          <b>Cancel</b>
-          <FcHighPriority className="categoryIcon" onClick={closePopup} />
-          <b>Add</b>
-          <FcApproval className="categoryIcon" onClick={handleSubmit} />
-        </DialogActions>
-      </form>
-    </div>
+            <b>Add</b>
+            <FcApproval className="categoryIcon" onClick={handleSubmit} />
+          </DialogActions>
+        </form>
+      </DialogContent>
+      <DialogActions></DialogActions>
+    </Dialog>
   );
 };
 
