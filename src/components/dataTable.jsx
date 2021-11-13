@@ -9,13 +9,13 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 
-export default function DataTable() {
+const DataTable = (props) => {
   return (
     <Box
       className="boxStyles"
       sx={{
         width: 780,
-        height: 347,
+        height: 367,
         bgcolor: "#fff",
       }}
     >
@@ -42,14 +42,16 @@ export default function DataTable() {
                 </TableRow>
               </TableHead>
               <TableBody>
-                <TableRow key={1}>
-                  <TableCell component="th" scope="row">
-                    Water bill
-                  </TableCell>
-                  <TableCell align="left">600</TableCell>
-                  <TableCell align="left">expenses</TableCell>
-                  <TableCell align="left">06/11/2021</TableCell>
-                </TableRow>
+                {props.events.map((event) => (
+                  <TableRow key={event.id}>
+                    <TableCell component="th" scope="row">
+                      {event.description}
+                    </TableCell>
+                    <TableCell align="left">{event.amount}</TableCell>
+                    <TableCell align="left">{event.category}</TableCell>
+                    <TableCell align="left">{event.date}</TableCell>
+                  </TableRow>
+                ))}
               </TableBody>
             </Table>
           </TableContainer>
@@ -57,4 +59,6 @@ export default function DataTable() {
       </div>
     </Box>
   );
-}
+};
+
+export default DataTable;

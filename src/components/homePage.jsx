@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 import { useAuth } from "../context/authContext";
 
 import { Box } from "@mui/system";
@@ -8,6 +8,16 @@ import DataTable from "./dataTable";
 import { Fab, ListItem } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { Container, Grid } from "@mui/material";
+
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy,
+  addDoc,
+  serverTimestamp,
+} from "firebase/firestore";
 
 import Form from "./form";
 import CategoryBoxes from "./categoryBoxes";
@@ -17,6 +27,8 @@ const HomePage = () => {
   const history = useHistory();
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
     if (!user) {
@@ -40,15 +52,35 @@ const HomePage = () => {
     setOpen(false);
   };
 
-  const fetchData = () => {
+  const fetchData = async () => {
     // fetch data
+    setLoading(true);
+    const eventsRef = collection(db, "events");
+    const queryData = query(eventsRef, orderBy("date", "desc"));
+    const response = await getDocs(queryData);
+    const tempData = response.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+      date: doc.data().date,
+    }));
+    await setEvents(tempData);
+    setLoading(false);
+    await console.log(events);
   };
 
-  const postData = (state) => {
+  const postData = async (state) => {
     // post data
-    console.log(state);
+    // console.log(state);
+    await addDoc(collection(db, "events"), {
+      ...state,
+    });
     fetchData();
+    handleClose();
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <React.Fragment>
@@ -64,7 +96,7 @@ const HomePage = () => {
                       <CategoryBoxes />
                     </ListItem>
                     <ListItem>
-                      <DataTable />
+                      <DataTable events={events} />
                     </ListItem>
                   </Grid>
                   <Grid item xs={6} md={4}>

@@ -28,7 +28,13 @@ const Form = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(state);
+    for (const field in state) {
+      if (typeof state[field] === "string" && !state[field]) {
+        alert("All the input fields should be filled.");
+        return;
+      }
+    }
+    // console.log(state);
     props.postData(state);
   };
   return (
@@ -77,7 +83,7 @@ const Form = (props) => {
                 onChange={handleInputChange}
               >
                 <MenuItem value={"income"}>income</MenuItem>
-                <MenuItem value={"expense"}>expenses</MenuItem>
+                <MenuItem value={"expense"}>expense</MenuItem>
                 <MenuItem value={"saving"}>savings</MenuItem>
               </Select>
             </ListItem>
