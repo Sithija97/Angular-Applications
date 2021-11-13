@@ -22,6 +22,7 @@ import {
 import Form from "./form";
 import CategoryBoxes from "./categoryBoxes";
 import ProfileSection from "./profileSection";
+import FeaturesSection from "./featuresSection";
 
 const HomePage = () => {
   const history = useHistory();
@@ -37,6 +38,7 @@ const HomePage = () => {
     }
     /* other func if user is there */
     fetchData();
+    console.log(user);
   }, [user, history]);
 
   const handleLoggedOut = async () => {
@@ -70,7 +72,6 @@ const HomePage = () => {
 
   const postData = async (state) => {
     // post data
-    // console.log(state);
     await addDoc(collection(db, "events"), {
       ...state,
     });
@@ -84,7 +85,7 @@ const HomePage = () => {
 
   return (
     <React.Fragment>
-      <Box py={20} className="headerBox" color="white"></Box>
+      <Box py={18} className="headerBox" color="white"></Box>
       <Grid container justifyContent="center">
         <Grid item xs={10}>
           <Box p={2} mt={-30} mb={2} className="wrapper">
@@ -99,9 +100,12 @@ const HomePage = () => {
                       <DataTable events={events} />
                     </ListItem>
                   </Grid>
-                  <Grid item xs={6} md={4}>
+                  <Grid item xs={6} md={4} display="table-column">
                     <ListItem>
                       <ProfileSection handleLoggedOut={handleLoggedOut} />
+                    </ListItem>
+                    <ListItem>
+                      <FeaturesSection />
                     </ListItem>
                     <Box sx={{ "& > :not(style)": { m: 1 } }}>
                       <Fab

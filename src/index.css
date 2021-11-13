@@ -135,6 +135,6 @@ code {
 
 .addButton {
   right: -340px !important;
-  bottom: -150px !important;
+  bottom: 10px !important;
   background-color: #d63031 !important;
 }
