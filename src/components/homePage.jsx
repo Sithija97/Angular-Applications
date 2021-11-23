@@ -30,6 +30,12 @@ const HomePage = () => {
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [events, setEvents] = useState([]);
+  const initialCategory = {
+    income: 0.0,
+    expense: 0.0,
+    saving: 0.0,
+  };
+  const [category, setCategory] = useState(initialCategory);
 
   useEffect(() => {
     if (!user) {
@@ -54,6 +60,13 @@ const HomePage = () => {
     setOpen(false);
   };
 
+  const calculateCategories = async () => {
+    const incomeTotal = 0.0;
+    const income = events.filter((e) => e.category === "income");
+    const expense = events.filter((e) => e.category === "expense");
+    const saving = events.filter((e) => e.category === "saving");
+  };
+
   const fetchData = async () => {
     // fetch data
     setLoading(true);
@@ -68,6 +81,7 @@ const HomePage = () => {
     await setEvents(tempData);
     setLoading(false);
     await console.log(events);
+    calculateCategories();
   };
 
   const postData = async (state) => {

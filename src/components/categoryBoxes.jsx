@@ -1,10 +1,11 @@
 import React from "react";
 import { FcMoneyTransfer, FcPositiveDynamic, FcBearish } from "react-icons/fc";
 import { Box } from "@mui/system";
+import { Grid } from "@mui/material";
 
 const CategoryBoxes = () => {
   return (
-    <div style={{ display: "flex" }}>
+    <Grid style={{ display: "flex" }}>
       <Box
         className="boxStyles"
         sx={{
@@ -50,7 +51,7 @@ const CategoryBoxes = () => {
           </p>
         </div>
       </Box>
-    </div>
+    </Grid>
   );
 };
 
