@@ -84,14 +84,40 @@ const HomePage = () => {
 
   const calculateCategories = async () => {
     let sumOfExpense = 0.0;
+    let sumOfIncome = 0.0;
+    let sumOfSaving = 0.0;
+
+    // expense
     const expenses = await events.filter(
-      (income) => income.category === "expense"
+      (expense) => expense.category === "expense"
     );
-    console.log("expenses", expenses);
-    const expenseTotal = await expenses.map((value) => {
+    await expenses.map((value) => {
       sumOfExpense += parseFloat(value.amount);
     });
     await console.log(sumOfExpense);
+
+    // income
+    const incomes = await events.filter(
+      (income) => income.category === "income"
+    );
+    await incomes.map((value) => {
+      sumOfIncome += parseFloat(value.amount);
+    });
+
+    // saving
+    const savings = await events.filter(
+      (saving) => saving.category === "saving"
+    );
+    await savings.map((value) => {
+      sumOfSaving += parseFloat(value.amount);
+    });
+
+    // set caegory values
+    await setCategory({
+      income: sumOfIncome,
+      expense: sumOfExpense,
+      saving: sumOfSaving,
+    });
   };
 
   const postData = async (state) => {
@@ -100,13 +126,14 @@ const HomePage = () => {
       ...state,
       user: user.email,
     });
-    fetchData();
+    await fetchData();
+    await calculateCategories();
     handleClose();
   };
 
-  useEffect(() => {
-    fetchData();
-    calculateCategories();
+  useEffect(async () => {
+    await fetchData();
+    await calculateCategories();
   }, []);
 
   return (
@@ -120,7 +147,7 @@ const HomePage = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={6} md={8}>
                     <ListItem>
-                      <CategoryBoxes />
+                      <CategoryBoxes categories={category} />
                     </ListItem>
                     <ListItem>
                       <DataTable events={events} />

@@ -3,7 +3,8 @@ import { FcMoneyTransfer, FcPositiveDynamic, FcBearish } from "react-icons/fc";
 import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
 
-const CategoryBoxes = () => {
+const CategoryBoxes = (props) => {
+  console.log(props.categories);
   return (
     <Grid style={{ display: "flex" }}>
       <Box
@@ -17,7 +18,8 @@ const CategoryBoxes = () => {
         <div className="categoryContainer">
           <FcPositiveDynamic className="categoryIcon" />
           <p>
-            <b>Income</b> <br /> <p className="numberVaue">280 000</p>
+            <b>Income</b> <br />{" "}
+            <p className="numberVaue">{props.categories.income}</p>
           </p>
         </div>
       </Box>
@@ -32,7 +34,8 @@ const CategoryBoxes = () => {
         <div className="categoryContainer">
           <FcBearish className="categoryIcon" />
           <p>
-            <b>Expenses</b> <br /> <p className="numberVaue">30 000</p>
+            <b>Expenses</b> <br />{" "}
+            <p className="numberVaue">{props.categories.expense}</p>
           </p>
         </div>
       </Box>
@@ -47,7 +50,8 @@ const CategoryBoxes = () => {
         <div className="categoryContainer">
           <FcMoneyTransfer className="categoryIcon" />
           <p>
-            <b>Savings</b> <br /> <p className="numberVaue">250 000</p>
+            <b>Savings</b> <br />{" "}
+            <p className="numberVaue">{props.categories.saving}</p>
           </p>
         </div>
       </Box>
