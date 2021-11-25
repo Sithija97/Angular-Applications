@@ -82,7 +82,17 @@ const HomePage = () => {
     setLoading(false);
   };
 
-  const calculateCategories = async () => {};
+  const calculateCategories = async () => {
+    let sumOfExpense = 0.0;
+    const expenses = await events.filter(
+      (income) => income.category === "expense"
+    );
+    console.log("expenses", expenses);
+    const expenseTotal = await expenses.map((value) => {
+      sumOfExpense += parseFloat(value.amount);
+    });
+    await console.log(sumOfExpense);
+  };
 
   const postData = async (state) => {
     // post data
@@ -96,6 +106,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchData();
+    calculateCategories();
   }, []);
 
   return (
