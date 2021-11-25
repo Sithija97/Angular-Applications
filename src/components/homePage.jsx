@@ -60,34 +60,35 @@ const HomePage = () => {
     setOpen(false);
   };
 
-  const calculateCategories = async () => {
-    const incomeTotal = 0.0;
-    const income = events.filter((e) => e.category === "income");
-    const expense = events.filter((e) => e.category === "expense");
-    const saving = events.filter((e) => e.category === "saving");
-  };
-
   const fetchData = async () => {
     // fetch data
     setLoading(true);
     const eventsRef = collection(db, "events");
     const queryData = query(eventsRef, orderBy("date", "desc"));
     const response = await getDocs(queryData);
-    const tempData = response.docs.map((doc) => ({
+
+    const userData = await response.docs.filter(
+      (doc) => doc.data().user === user.email
+    );
+
+    const tempData = await userData.map((doc) => ({
       ...doc.data(),
       id: doc.id,
       date: doc.data().date,
     }));
+
+    await console.log("userData", userData);
     await setEvents(tempData);
     setLoading(false);
-    await console.log(events);
-    calculateCategories();
   };
+
+  const calculateCategories = async () => {};
 
   const postData = async (state) => {
     // post data
     await addDoc(collection(db, "events"), {
       ...state,
+      user: user.email,
     });
     fetchData();
     handleClose();
