@@ -22,42 +22,37 @@ const Login = () => {
         </Button>
       </div> */}
 
-<div class="row">
-  <div class="column" 
-    style={{ backgroundColor: "white"}}
-  >
-    <ListItem>
+      <div class="row">
+        <div class="column" style={{ backgroundColor: "white" }}>
+          <ListItem>
             <img src="images/img2.jpg" alt="" className="loginImg" />
           </ListItem>
+        </div>
 
-  </div>
-  
-  <div class="column" 
-    style={{ backgroundColor: "#d63031"}}
-  >
-    <Box
-              className="boxStyles loginContainer"
-              sx={{
-                width: 350,
-                height: 350,
-                bgcolor: "#d63031",
-              }}
-            >
-              <p className="loginTitle">Login</p>
+        <div class="column" style={{ backgroundColor: "#d63031" }}>
+          <Box
+            className="boxStyles loginContainer"
+            sx={{
+              width: 350,
+              height: 350,
+              bgcolor: "#d63031",
+            }}
+          >
+            <p className="loginTitle">Login</p>
 
-              <div style={{ padding: "30px" }}>
-                <div className="loginLoginwith" onClick={handleLogIn}>
-                  <span className="loginText">login with google</span>
-                  <img
-                    src="https://image.flaticon.com/icons/png/512/281/281764.png"
-                    alt="google_icon"
-                  />
-                </div>
+            <div style={{ padding: "30px" }}>
+              <div className="loginLoginwith" onClick={handleLogIn}>
+                <span className="loginText">login with google</span>
+                <img
+                  src="https://image.flaticon.com/icons/png/512/281/281764.png"
+                  alt="google_icon"
+                />
               </div>
-            </Box>
-  </div>
-  </div>
-       </React.Fragment>
+            </div>
+          </Box>
+        </div>
+      </div>
+    </React.Fragment>
   );
 };
 

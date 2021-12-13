@@ -23,6 +23,9 @@ import Form from "./form";
 import CategoryBoxes from "./categoryBoxes";
 import ProfileSection from "./profileSection";
 import FeaturesSection from "./featuresSection";
+import Income from "./income";
+import Expense from "./expense";
+import Saving from "./saving";
 
 const HomePage = () => {
   const history = useHistory();
@@ -138,10 +141,6 @@ const HomePage = () => {
 
   return (
     <React.Fragment>
-
-
-
-
       <Box py={18} className="headerBox" color="white"></Box>
       <Grid container justifyContent="center">
         <Grid item xs={10}>
@@ -151,7 +150,9 @@ const HomePage = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={6} md={8}>
                     <ListItem>
-                      <CategoryBoxes categories={category} />
+                      <Income categories={category} />
+                      <Expense categories={category} />
+                      <Saving categories={category} />
                     </ListItem>
                     <ListItem>
                       <DataTable events={events} />

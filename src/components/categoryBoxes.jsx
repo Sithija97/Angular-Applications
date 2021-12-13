@@ -7,7 +7,7 @@ const CategoryBoxes = (props) => {
   console.log(props.categories);
   return (
     <Grid style={{ display: "flex" }}>
-      <Box
+      {/* <Box
         className="boxStyles"
         sx={{
           width: 225,
@@ -22,8 +22,8 @@ const CategoryBoxes = (props) => {
             <p className="numberVaue">{props.categories.income}</p>
           </p>
         </div>
-      </Box>
-      <Box
+      </Box> */}
+      {/* <Box
         className="boxStyles"
         sx={{
           width: 225,
@@ -38,8 +38,8 @@ const CategoryBoxes = (props) => {
             <p className="numberVaue">{props.categories.expense}</p>
           </p>
         </div>
-      </Box>
-      <Box
+      </Box> */}
+      {/* <Box
         className="boxStyles"
         sx={{
           width: 225,
@@ -54,7 +54,7 @@ const CategoryBoxes = (props) => {
             <p className="numberVaue">{props.categories.saving}</p>
           </p>
         </div>
-      </Box>
+      </Box> */}
     </Grid>
   );
 };
