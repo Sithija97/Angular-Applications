@@ -67,7 +67,7 @@ code {
 
 .loginContainer {
   margin: auto;
-  margin-top: 170px;
+  margin-top: 150px;
   box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
   -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
   -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
@@ -137,4 +137,157 @@ code {
   right: -340px !important;
   bottom: 10px !important;
   background-color: #d63031 !important;
+}
+
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Create four equal columns */
+.column {
+  flex: 25%;
+  padding: 20px;
+  height: 100vh;
+}
+
+.column2 {
+  padding: 20px;
+  flex: 20%;
+  height: 20vh;
+}
+
+
+
+/* On screens that are 992px wide or less, go from four columns to two columns */
+@media screen and (max-width: 992px) {
+  .column {
+    flex: 50%;
+    height: 100vh;
+  }
+  .column2 {
+    flex: 20%;
+    height: 30vh;
+  }
+
+
+  .loginContainer {
+    margin: auto;
+    margin-top: 150px;
+    box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+  }
+  
+}
+
+@media only screen and (max-width: 600px) {
+  .column {
+    flex: 50%;
+    height: 100vh;
+  }
+  .column2 {
+    flex: 20%;
+    height: 30vh;
+  }
+
+
+  .loginContainer {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+  }
+}
+@media only screen and (min-width: 600px) {
+  .column {
+    flex: 50%;
+    height: 100vh;
+  }
+  .column2 {
+    flex: 20%;
+    height: 30vh;
+  }
+
+
+  .loginContainer {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+  }
+}
+@media only screen and (min-width: 768px) {
+  .column {
+    flex: 50%;
+    height: 100vh;
+  }
+
+  .column2 {
+    flex: 20%;
+    height: 15vh;
+  }
+  
+
+  .loginContainer {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .column {
+    flex: 50%;
+    height: 100vh;
+  }
+
+  .column2 {
+    flex: 20%;
+    height: 15vh;
+  }
+
+  .loginContainer {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .column {
+    flex: 50%;
+    height: 100vh;
+  }
+
+  .column2 {
+    flex: 20%;
+    height: 15vh;
+  }
+
+  .loginContainer {
+    margin: auto;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 2px 6px 17px -2px rgba(0, 0, 0, 0.62);
+  }
+}
+
+/* On screens that are 600px wide or less, make the columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
 }

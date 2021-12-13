@@ -21,28 +21,21 @@ const Login = () => {
           Google login
         </Button>
       </div> */}
-      <Grid container spacing={0}>
-        <Grid
-          item
-          xs={6}
-          md={6}
-          style={{ backgroundColor: "white", height: "100vh" }}
-        >
-          <ListItem>
+
+<div class="row">
+  <div class="column" 
+    style={{ backgroundColor: "white"}}
+  >
+    <ListItem>
             <img src="images/img2.jpg" alt="" className="loginImg" />
           </ListItem>
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          md={6}
-          style={{ backgroundColor: "#d63031", height: "100vh" }}
-        >
-          <ListItem>
-            {/* <Button variant="contained" >
-              Google login
-            </Button> */}
-            <Box
+
+  </div>
+  
+  <div class="column" 
+    style={{ backgroundColor: "#d63031"}}
+  >
+    <Box
               className="boxStyles loginContainer"
               sx={{
                 width: 350,
@@ -62,10 +55,9 @@ const Login = () => {
                 </div>
               </div>
             </Box>
-          </ListItem>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+  </div>
+  </div>
+       </React.Fragment>
   );
 };
 
