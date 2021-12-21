@@ -1,0 +1,17 @@
+.home {
+  background: rgb(254, 39, 75);
+  background: linear-gradient(
+    90deg,
+    rgb(180, 40, 40) 31%,
+    rgb(233, 56, 56) 39%,
+    rgb(231, 223, 224) 84%
+  );
+}
+.app {
+  display: flex;
+  /* height: 91.5vh; */
+  height: 100%;
+  max-width: 100%;
+  margin: auto;
+  padding-top: 4%;
+}
