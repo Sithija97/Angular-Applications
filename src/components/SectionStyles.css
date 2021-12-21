@@ -1,0 +1,81 @@
+/* basic styles */
+.MuiPaper-root {
+  border-radius: 20px !important;
+}
+
+.section_one {
+  flex: 0.3;
+  min-width: fit-content;
+  background-color: #f1f2f6;
+  padding: 15px;
+  /* align-items: center;
+    margin: auto; */
+}
+
+.section_two {
+  flex: 0.4;
+  min-width: fit-content;
+  background-color: #f1f2f6;
+  padding: 15px;
+}
+
+.section_three {
+  flex: 0.3;
+  min-width: fit-content;
+  background-color: #f1f2f6;
+  padding: 15px;
+}
+
+/* advance styles */
+.section_two_card {
+  height: 87vh;
+}
+
+.section_three_profile_card {
+  height: 30vh;
+}
+
+h4 {
+  margin-left: 15px;
+}
+
+.form_title {
+  margin-bottom: -0.5vh;
+}
+
+.section_one_overview_card {
+  height: 25vh;
+}
+
+.section_three_form_card {
+  height: 54vh;
+}
+
+.section_one_table_card {
+  height: 59vh;
+}
+
+.prfile_content {
+  margin-top: -8vh;
+}
+
+.profile_picture {
+  height: 5.5em;
+  border-radius: 50%;
+  border: 5px solid #b0afb1;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile_name {
+  text-align: center !important;
+  margin-top: 8px;
+}
+
+.logout_button {
+  justify-content: center;
+  font-weight: bold !important;
+  color: #ff5252;
+  cursor: pointer;
+}

@@ -1,20 +1,20 @@
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import firebase from "firebase/firebase";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB8tw7eTGyQqL-0jP47KKJDKUTALTb1hOU",
-  authDomain: "expense-manager-595d9.firebaseapp.com",
-  projectId: "expense-manager-595d9",
-  storageBucket: "expense-manager-595d9.appspot.com",
-  messagingSenderId: "792223775882",
-  appId: "1:792223775882:web:8031b4d911067b99538173",
+  apiKey: "AIzaSyA1vN1RO3JpS4VGy402AHnEQjGDcyd1FL0",
+  authDomain: "money-lover-a5f70.firebaseapp.com",
+  projectId: "money-lover-a5f70",
+  storageBucket: "money-lover-a5f70.appspot.com",
+  messagingSenderId: "722824834776",
+  appId: "1:722824834776:web:b3e23594d77d5f8831b1ad",
 };
 
-// eslint-disable-next-line
-const app = initializeApp(firebaseConfig);
-const auth = getAuth();
-const db = getFirestore();
-const provider = new GoogleAuthProvider();
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const db = firebaseApp.firestore();
+const auth = firebase.auth();
+const providerGoogle = new firebase.auth.GoogleAuthProvider();
+const providerFacebook = new firebase.auth.FacebookAuthProvider();
+const providerGithub = new firebase.auth.GithubAuthProvider();
 
-export { auth, provider, db };
+export { auth, providerGoogle, providerFacebook, providerGithub };
+export default db;
